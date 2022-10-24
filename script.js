@@ -5,6 +5,12 @@ let library = [
     "publish date": 1994,
     read: "not",
   },
+  {
+    title: "Pale Blue Dot",
+    author: "Carl Sagan",
+    "publish date": 1994,
+    read: "not",
+  },
 ];
 
 function Book() {
