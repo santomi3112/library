@@ -20,3 +20,12 @@ function Book() {
 function addBookToLibrary() {
   // do stuff here
 }
+
+
+function openForm() {
+  document.querySelector('[data-form]').style.display = "block"
+}
+
+function closeForm() {
+  document.querySelector('[data-form]').style.display = "none"
+}

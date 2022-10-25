@@ -12,7 +12,28 @@
     <header>
       <div class="title">The Local Library</div>
     </header>
-    <button class="add-button">Add a book</button>
+    <button class="add-button" onclick="openForm()">Add a book</button>
+    <div class="form-popup" data-form>
+      <form action="">
+        <label for="title">title :</label>
+        <input type="text" placeholder="harry potah" />
+
+        <label for="author">author :</label>
+        <input type="text" placeholder="rowling" />
+
+        <label for="publish date">publish date :</label>
+        <input type="number" placeholder="2022" />
+
+        <label for="read">read :</label>
+        <select name="" id="">
+          <option value="yes">Yes</option>
+          <option value="not">Not</option>
+        </select>
+
+        <button type="submit">Save</button>
+        <button type="button" onclick="closeForm()">Cancel</button>
+      </form>
+    </div>
     <main>
       <div class="container">
         <table>
