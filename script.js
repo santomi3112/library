@@ -29,7 +29,7 @@ function addBookToLibrary() {
   let newBook = new Book(titleForm, authorForm, publishForm, readForm);
   library.push(newBook);
 
-  updateTable()
+  updateTable();
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ function toggleReadButton(key) {
   console.log(key);
 }
 
-function getReadStatus() {
+function getReadStatus(index) {
   let td = document.createElement("td");
   let btn = document.createElement("button");
 
@@ -51,8 +51,13 @@ function getReadStatus() {
 
   btn.addEventListener("click", () => {
     // let readForm = document.forms["form"]["read"].value;
-    library.read = 'no'
-    updateTable()
+    if (library[index].read == "yes") {
+      library[index].read = "not";
+    } else if (library[index].read == "not") {
+      library[index].read = "yes";
+    }
+
+    updateTable();
   });
 
   td.appendChild(btn);
@@ -70,7 +75,7 @@ function updateTable() {
       tr.appendChild(td);
     });
 
-    tr.appendChild(getReadStatus());
+    tr.appendChild(getReadStatus(index));
     tbody.appendChild(tr);
   });
 }
