@@ -6,20 +6,7 @@ function closeForm() {
   document.querySelector("[data-form]").style.display = "none";
 }
 
-let library = [
-  {
-    title: "Pale Blue Dot",
-    author: "Carl Sagan",
-    publish: 1994,
-    read: "Not",
-  },
-  {
-    title: "Modern Chemistry",
-    author: "H. Clark Metcalfe",
-    publish: 1974,
-    read: "Not",
-  },
-];
+let library = [];
 
 function Book(title, author, publish, read) {
   // the constructor
@@ -30,10 +17,11 @@ function Book(title, author, publish, read) {
 }
 
 const form = document.getElementById("addBookForm");
+const tbody = document.querySelector("[data-tbody]");
 
 function addBookToLibrary() {
   // do stuff here
-  let titleForm = document.forms["form"]["title"].value.toString();
+  let titleForm = document.forms["form"]["title"].value;
   let authorForm = document.forms["form"]["author"].value;
   let publishForm = document.forms["form"]["publish"].value;
   let readForm = document.forms["form"]["read"].value;
@@ -41,29 +29,23 @@ function addBookToLibrary() {
   let newBook = new Book(titleForm, authorForm, publishForm, readForm);
   library.push(newBook);
 
+  let tr = document.createElement("tr");
+  tr.innerHTML = `<tr>
+                      <td>${titleForm}</td>
+                      <td>${authorForm}</td>
+                      <td>${publishForm}</td>
+                      <td>${readForm}</td>
+                      <td>
+                      <button class="read-button">Read</button>
+                      <button class="edit-button">Edit</button>
+                      <button class="delete-button">Delete</button>
+                    </td>
+                  </tr>`;
+  tbody.appendChild(tr);
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log(library);
   });
 }
 
-const tbody = document.querySelector("[data-tbody]");
-
-function showBookToTable() {
-  library.forEach((i) => {
-    // console.log(i.title)
-    let tr = document.createElement("tr");
-    tr.innerHTML = `<tr>
-                        <td>${i.title}</td>
-                        <td>${i.author}</td>
-                        <td>${i.publish}</td>
-                        <td>${i.read}</td>
-                        <td>
-                        <button class="read-button">Read</button>
-                        <button class="edit-button">Edit</button>
-                        <button class="delete-button">Delete</button>
-                      </td>
-                    </tr>`;
-    tbody.appendChild(tr);
-  });
-}
