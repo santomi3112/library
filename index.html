@@ -14,23 +14,23 @@
     </header>
     <button class="add-button" onclick="openForm()">Add a book</button>
     <div class="form-popup" data-form>
-      <form action="">
+      <form action="" id="addBookForm" name="form">
         <label for="title">title :</label>
-        <input type="text" placeholder="harry potah" />
+        <input type="text" placeholder="harry potah" id="title" name="title" required/>
 
         <label for="author">author :</label>
-        <input type="text" placeholder="rowling" />
+        <input type="text" placeholder="rowling" id="author" name="author" required/>
 
-        <label for="publish date">publish date :</label>
-        <input type="number" placeholder="2022" />
+        <label for="publish">publish date :</label>
+        <input type="number" placeholder="2022" id="publish" name="publish" required/>
 
         <label for="read">read :</label>
-        <select name="" id="">
+        <select name="read" id="read" >
           <option value="yes">Yes</option>
           <option value="not">Not</option>
         </select>
 
-        <button type="submit">Save</button>
+        <button type="submit" onclick="addBookToLibrary()">Save</button>
         <button type="button" onclick="closeForm()">Cancel</button>
       </form>
     </div>
@@ -47,7 +47,7 @@
             </tr>
           </thead>
           <tbody data-tbody>
-            <tr>
+            <!-- <tr>
               <td>Harry Potter</td>
               <td>J.K Rowling</td>
               <td>2021</td>
@@ -57,29 +57,8 @@
                 <button class="edit-button">Edit</button>
                 <button class="delete-button">Delete</button>
               </td>
-            </tr>
-            <tr>
-              <td>The Da Vinci Code</td>
-              <td>Dan Brown</td>
-              <td>2022</td>
-              <td>Not</td>
-              <td>
-                <button class="read-button">Read</button>
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>titleData</td>
-              <td>Dan Brown</td>
-              <td>2022</td>
-              <td>Not</td>
-              <td>
-                <button class="read-button">Read</button>
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
-              </td>
-            </tr>
+            </tr> -->
+            
           </tbody>
         </table>
       </div>
