@@ -29,19 +29,7 @@ function addBookToLibrary() {
   let newBook = new Book(titleForm, authorForm, publishForm, readForm);
   library.push(newBook);
 
-  let tr = document.createElement("tr");
-  tr.innerHTML = `<tr>
-                      <td>${titleForm}</td>
-                      <td>${authorForm}</td>
-                      <td>${publishForm}</td>
-                      <td>${readForm}</td>
-                      <td>
-                      <button class="read-button">Read</button>
-                      <button class="edit-button">Edit</button>
-                      <button class="delete-button">Delete</button>
-                    </td>
-                  </tr>`;
-  tbody.appendChild(tr);
+  updateTable()
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -49,3 +37,40 @@ function addBookToLibrary() {
   });
 }
 
+function toggleReadButton(key) {
+  let readForm = document.forms["form"]["read"].value;
+  key = readForm;
+  console.log(key);
+}
+
+function getReadStatus() {
+  let td = document.createElement("td");
+  let btn = document.createElement("button");
+
+  btn.textContent = "Change Read Status";
+
+  btn.addEventListener("click", () => {
+    // let readForm = document.forms["form"]["read"].value;
+    library.read = 'no'
+    updateTable()
+  });
+
+  td.appendChild(btn);
+  return td;
+}
+
+function updateTable() {
+  tbody.textContent = "";
+
+  library.forEach((book, index) => {
+    let tr = document.createElement("tr");
+    Object.keys(book).forEach((prop) => {
+      let td = document.createElement("td");
+      td.textContent = book[prop];
+      tr.appendChild(td);
+    });
+
+    tr.appendChild(getReadStatus());
+    tbody.appendChild(tr);
+  });
+}
